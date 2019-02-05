@@ -54,7 +54,7 @@ fileprivate enum PostsAPIRouter : RouterRequestConvertible {
             return [
                 Keys.profileID : "\(id)"
             ]
-        default:
+        case .addPost, .getAllPosts:
             return nil
         }
     }
@@ -67,15 +67,12 @@ fileprivate enum PostsAPIRouter : RouterRequestConvertible {
         switch self {
         case .addPost(let post):
             return post.dictionary
-        default:
+        case .getAllPosts, .getPost:
             return nil
         }
     }
     
     struct Keys {
-        static let title = "title"
-        static let body = "body"
-        static let userId = "userID"
         static let profileID = "profileID"
     }
 }

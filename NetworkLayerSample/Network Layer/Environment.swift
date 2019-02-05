@@ -29,7 +29,7 @@ enum Environment {
     
     var port: Int? {
         switch self {
-        default:            return nil
+        case .staging, .production:            return nil
         }
     }
     
