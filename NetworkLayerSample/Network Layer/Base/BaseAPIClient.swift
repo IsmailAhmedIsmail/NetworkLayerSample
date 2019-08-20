@@ -49,5 +49,47 @@ class BaseAPIClient: NSObject {
                 
             })
     }
+    
+    static func performMultipartRequest<T:Decodable>(route:RouterMultiPartRequestConvertible, decoder: JSONDecoder = JSONDecoder(), completion: ((_ result: Result<T>) -> Void)?) {
+        
+            
+            let baseRouteURLRequest = try! route.asURLRequest()
+            
+            sessionManager.upload(multipartFormData: { (multipartData) in
+                route.parameters?.forEach({ (arg0) in
+                    
+                    let (key, value) = arg0
+                    multipartData.append("\(value)".data(using: .utf8) ?? Data(), withName: key)
+                })
+                
+                route.files?.forEach({ fileInfo in
+                    
+                    multipartData.append(fileInfo.filePathURL, withName: fileInfo.fieldName)
+                })
+                
+            }, to: baseRouteURLRequest.url!) { (encodingResult) in
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    upload.responseJSON(completionHandler: { (response: DataResponse<Any>) in
+                        
+                        switch response.result {
+                        case .success:
+                            do {
+                                let variable = try decoder.decode(T.self, from: response.data!)
+                                completion?(.success(variable))
+                            } catch {
+                                completion?(.failure(error))
+                            }
+                            
+                        case .failure(let error):
+                            completion?(.failure(error))
+                        }
+                            
+                    })
+                case .failure(let error):
+                    completion?(.failure(error))
+                }
+        }
+    }
 }
 

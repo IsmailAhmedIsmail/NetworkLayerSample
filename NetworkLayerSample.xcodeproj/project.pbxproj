@@ -13,6 +13,7 @@
 		EC93D65721FE1F5200281F26 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC93D65621FE1F5200281F26 /* Environment.swift */; };
 		EC95341A21F5D01800E6DFA1 /* PostsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC95341921F5D01800E6DFA1 /* PostsAPI.swift */; };
 		EC95341D21F5D15900E6DFA1 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC95341C21F5D15900E6DFA1 /* Post.swift */; };
+		EC9FA0E6230C14F90014245F /* MultiPartFileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9FA0E5230C14F90014245F /* MultiPartFileInfo.swift */; };
 		ECB2926B21F4E44E001E2316 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB2926A21F4E44E001E2316 /* AppDelegate.swift */; };
 		ECB2926D21F4E44E001E2316 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB2926C21F4E44E001E2316 /* ViewController.swift */; };
 		ECB2927021F4E44E001E2316 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECB2926E21F4E44E001E2316 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 		EC93D65621FE1F5200281F26 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		EC95341921F5D01800E6DFA1 /* PostsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsAPI.swift; sourceTree = "<group>"; };
 		EC95341C21F5D15900E6DFA1 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		EC9FA0E5230C14F90014245F /* MultiPartFileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPartFileInfo.swift; sourceTree = "<group>"; };
 		ECB2926721F4E44E001E2316 /* NetworkLayerSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkLayerSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECB2926A21F4E44E001E2316 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECB2926C21F4E44E001E2316 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				EC43DB562206FF4C007B3B9B /* Endpoints.swift */,
 				EC95341621F5CFD100E6DFA1 /* Posts API */,
 				ECB2928621F4E491001E2316 /* Base */,
+				EC9FA0E5230C14F90014245F /* MultiPartFileInfo.swift */,
 			);
 			path = "Network Layer";
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				EC17EAD12208555900739FD2 /* RouterRequestConvertible.swift in Sources */,
 				ECB2926B21F4E44E001E2316 /* AppDelegate.swift in Sources */,
 				ECB2929321F4E491001E2316 /* BaseAPIClient.swift in Sources */,
+				EC9FA0E6230C14F90014245F /* MultiPartFileInfo.swift in Sources */,
 				EC95341D21F5D15900E6DFA1 /* Post.swift in Sources */,
 				EC93D65721FE1F5200281F26 /* Environment.swift in Sources */,
 			);
@@ -405,7 +409,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = N5CY73679U;
+				DEVELOPMENT_TEAM = EKK9M2H3G4;
 				INFOPLIST_FILE = NetworkLayerSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -424,7 +428,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = N5CY73679U;
+				DEVELOPMENT_TEAM = EKK9M2H3G4;
 				INFOPLIST_FILE = NetworkLayerSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

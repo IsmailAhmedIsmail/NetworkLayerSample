@@ -83,3 +83,7 @@ extension Encodable {
         return (try? JSONSerialization.jsonObject(with: data, options: .allowFragments)) as? [String: Any]
     }
 }
+
+protocol RouterMultiPartRequestConvertible : RouterRequestConvertible {
+    var files : [MultiPartFileInfo]? { get }
+}
