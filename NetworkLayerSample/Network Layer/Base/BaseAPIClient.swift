@@ -27,26 +27,29 @@ class BaseAPIClient: NSObject {
 //        )
     )
     
+    
+    private static func handleResponse<T:Decodable>(_ response: DataResponse<Any>, decoder: JSONDecoder = JSONDecoder(), completion: ((_ result: Result<T>) -> Void)?) {
+        switch response.result {
+        case .success:
+            do {
+                let variable = try decoder.decode(T.self, from: response.data!)
+                completion?(.success(variable))
+            } catch {
+                completion?(.failure(error))
+            }
+            
+        case .failure(let error):
+            completion?(.failure(error))
+        }
+    }
+    
     static func performRequest<T:Decodable>(route: RouterRequestConvertible, decoder: JSONDecoder = JSONDecoder(), completion: ((_ result: Result<T>) -> Void)?) {
         
         sessionManager
             .request(route)
             .validate()
             .responseJSON(completionHandler: { (response: DataResponse<Any>) in
-                
-                switch response.result {
-                case .success:
-                    do {
-                        let variable = try decoder.decode(T.self, from: response.data!)
-                        completion?(.success(variable))
-                    } catch {
-                        completion?(.failure(error))
-                    }
-                    
-                case .failure(let error):
-                    completion?(.failure(error))
-                }
-                
+                handleResponse(response, decoder: decoder, completion: completion)
             })
     }
     
@@ -68,24 +71,14 @@ class BaseAPIClient: NSObject {
                 })
                 
             }, to: baseRouteURLRequest.url!) { (encodingResult) in
+                
                 switch encodingResult {
+                
                 case .success(let upload, _, _):
-                    upload.responseJSON(completionHandler: { (response: DataResponse<Any>) in
-                        
-                        switch response.result {
-                        case .success:
-                            do {
-                                let variable = try decoder.decode(T.self, from: response.data!)
-                                completion?(.success(variable))
-                            } catch {
-                                completion?(.failure(error))
-                            }
-                            
-                        case .failure(let error):
-                            completion?(.failure(error))
-                        }
-                            
+                    upload.validate().responseJSON(completionHandler: { (response: DataResponse<Any>) in
+                        handleResponse(response, decoder: decoder, completion: completion)
                     })
+                    
                 case .failure(let error):
                     completion?(.failure(error))
                 }
