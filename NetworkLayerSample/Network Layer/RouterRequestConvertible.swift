@@ -34,9 +34,10 @@ extension RouterRequestConvertible {
         var components = environment.components
         components.path = endPoint.subdomain + endPoint.path
         
-        var items = [URLQueryItem]()
-        queryItems?.forEach { items.append(URLQueryItem(name: $0, value: $1)) }
-        components.queryItems = items
+        // Query Items
+        components.queryItems = queryItems?.compactMap { (key, value) in
+            return URLQueryItem(name: key, value: value)
+        }
         
         // Request
         var urlRequest = URLRequest(url: components.url!)
