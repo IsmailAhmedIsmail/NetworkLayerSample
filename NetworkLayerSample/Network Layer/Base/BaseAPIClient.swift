@@ -70,7 +70,7 @@ class BaseAPIClient: NSObject {
                     multipartData.append(fileInfo.filePathURL, withName: fileInfo.fieldName)
                 })
                 
-            }, to: baseRouteURLRequest.url!) { (encodingResult) in
+            }, to: baseRouteURLRequest.url!, method: route.method, headers: route.headers) { (encodingResult) in
                 
                 switch encodingResult {
                 
